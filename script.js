@@ -488,6 +488,9 @@ function enterApp(username,role,email=""){
 _s0={username,role,email};
 document.getElementById("auth-screen").style.display="none";
 document.getElementById("main-app").classList.remove("d-none");
+// Reset ke home menu, bersihkan section yang mungkin masih terbuka
+document.querySelectorAll(".sec").forEach(s=>s.classList.add("d-none"));
+document.getElementById("main-menu").style.display="flex";
 document.getElementById("sb-uname").textContent=username;
 const badge=document.getElementById("sb-role-badge");
 badge.textContent=role==="admin"?"Admin":"User";
@@ -2367,4 +2370,3 @@ async function _checkRefParam(){
   // Bersihkan URL
   window.history.replaceState({}, '', window.location.pathname);
 }
-
