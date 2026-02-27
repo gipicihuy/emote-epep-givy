@@ -1,0 +1,10 @@
+# netlify.toml
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/cfg"
+  to = "/.netlify/functions/cfg"
+  status = 200
