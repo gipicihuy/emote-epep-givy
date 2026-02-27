@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<title>Website Emote Epep</title>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/ShahGCreator/icon@main/PNG/909000001.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="orb orb-1"></div><div class="orb orb-2"></div>
+
+<!-- TOAST NOTIF -->
+<div id="toast-container"></div>
+
+<div id="auth-screen" class="auth-screen">
+  <div class="auth-top-label"><div class="atl-dot"></div><span>FF Emote System · Indonesia</span><div class="atl-dot"></div></div>
+  <div class="auth-card" id="auth-card">
+    <div class="auth-brand">
+      <div class="brand-wrap">
+        <div class="brand-box">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" fill="url(#bg1)"/>
+            <circle cx="16" cy="16" r="4.5" fill="white" opacity=".95"/>
+            <defs><linearGradient id="bg1" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4facfe"/><stop offset="100%" stop-color="#00f2fe"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="brand-ring ring-a"></div><div class="brand-ring ring-b"></div><div class="brand-ring ring-c"></div>
+      </div>
+      <div class="brand-copy"><h1>Website Emote</h1><span>EPEP</span></div>
+    </div>
+    <div class="tab-switch">
+      <button class="ts-btn active" id="tab-masuk" onclick="switchTab('masuk')"><i class="fa-solid fa-right-to-bracket"></i> Masuk</button>
+      <button class="ts-btn" id="tab-daftar" onclick="switchTab('daftar')"><i class="fa-solid fa-user-plus"></i> Daftar</button>
+      <div class="ts-pill" id="ts-pill"></div>
+    </div>
+    <!-- Form Masuk -->
+    <div id="form-masuk" class="form-body show">
+      <div class="field-group"><i class="fa-solid fa-user fg-icon"></i><input id="login-username" type="text" class="fg-input" placeholder="Username" autocomplete="username"></div>
+      <div class="field-group"><i class="fa-solid fa-lock fg-icon"></i><input id="login-password" type="password" class="fg-input" placeholder="Password"><button class="fg-eye" onclick="toggleEye('login-password',this)" tabindex="-1"><i class="fa-solid fa-eye-slash"></i></button></div>
+      <button class="submit-btn" id="btn-login" onclick="doLogin()"><div class="btn-loader"></div><span><i class="fa-solid fa-right-to-bracket" style="margin-right:6px"></i>Masuk ke Akun</span><i class="fa-solid fa-arrow-right btn-arrow"></i><div class="btn-shine"></div></button>
+      <p class="form-hint">Belum punya akun? <a onclick="switchTab('daftar')">Daftar</a></p>
+      <a href="https://whatsapp.com/channel/0029Vb6lotd6hENhZaVRuW1F" target="_blank" rel="noopener" class="auth-wa-link"><i class="fa-brands fa-whatsapp"></i><span>Ikuti Saluran WhatsApp</span><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem;opacity:.7"></i></a>
+    </div>
+    <!-- Form Daftar -->
+    <div id="form-daftar" class="form-body">
+      <div class="field-group"><i class="fa-solid fa-user fg-icon"></i><input id="reg-username" type="text" class="fg-input" placeholder="Username (min. 5 karakter)"><span class="fg-msg" id="msg-username"></span></div>
+      <div class="field-group"><i class="fa-solid fa-envelope fg-icon"></i><input id="reg-email" type="email" class="fg-input" placeholder="Email (@gmail.com)"><span class="fg-msg" id="msg-email"></span></div>
+      <div class="field-group"><i class="fa-solid fa-lock fg-icon"></i><input id="reg-password" type="password" class="fg-input" placeholder="Password (min. 8 karakter)"><button class="fg-eye" onclick="toggleEye('reg-password',this)" tabindex="-1"><i class="fa-solid fa-eye-slash"></i></button><span class="fg-msg" id="msg-password"></span></div>
+      <div class="field-group"><i class="fa-solid fa-lock fg-icon"></i><input id="reg-confirm" type="password" class="fg-input" placeholder="Konfirmasi Password"><button class="fg-eye" onclick="toggleEye('reg-confirm',this)" tabindex="-1"><i class="fa-solid fa-eye-slash"></i></button><span class="fg-msg" id="msg-confirm"></span></div>
+      <button class="submit-btn" id="btn-register" onclick="doRegister()"><div class="btn-loader"></div><span><i class="fa-solid fa-user-plus" style="margin-right:6px"></i>Buat Akun Baru</span><i class="fa-solid fa-arrow-right btn-arrow"></i><div class="btn-shine"></div></button>
+      <p class="form-hint">Sudah punya akun? <a onclick="switchTab('masuk')">Masuk</a></p>
+    </div>
+    <div class="sec-badges">
+      <div class="sec-badge"><i class="fa-solid fa-lock"></i><span>Encrypted</span></div>
+      <div class="sec-badge"><i class="fa-solid fa-database"></i><span>Secure DB</span></div>
+    </div>
+  </div>
+  <div class="auth-footer"><span>© 2026 Website Emote Epep</span><span class="af-dot">·</span><span class="credit">Givy</span></div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app" class="main-app d-none">
+
+  <!-- Status bar — SATU online saja -->
+  <div class="status-bar">
+    <div class="sb-left"><span class="sb-dot-pulse"></span><span class="sb-online-txt">Online</span></div>
+    <div class="sb-mid">FF Emote</div>
+    <div class="sb-right">
+      <span class="sb-role-badge" id="sb-role-badge"></span>
+      <span class="sb-uname" id="sb-uname"></span>
+      <button class="sb-icon-btn sb-refresh-btn" id="sb-refresh-btn" onclick="doRefresh()" title="Refresh"><i class="fa-solid fa-rotate-right"></i></button>
+      <button class="sb-icon-btn" onclick="showSec('profile-menu')" title="Profil"><i class="fa-solid fa-circle-user"></i></button>
+      <button class="sb-icon-btn sb-logout" onclick="doLogout()" title="Keluar"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+  </div>
+
+  <div class="app-body">
+
+    <header class="app-header">
+      <div class="ah-logo">
+        <div class="ah-icon">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" fill="url(#hg)"/><circle cx="16" cy="16" r="4" fill="white" opacity=".9"/><defs><linearGradient id="hg" x1="4" y1="2" x2="28" y2="30"><stop offset="0%" stop-color="#4facfe"/><stop offset="100%" stop-color="#00f2fe"/></linearGradient></defs></svg>
+          <div class="ah-pulse"></div>
+        </div>
+        <div class="ah-text"><strong>Website Emote Epep</strong><span class="credit">Givy</span></div>
+      </div>
+    </header>
+
+    <!-- Admin Banner -->
+    <div class="admin-banner d-none" id="admin-banner">
+      <div class="ab-inner">
+        <i class="fa-solid fa-crown ab-crown"></i>
+        <div class="ab-text"><strong>Administrator</strong><span>Masuk sebagai admin</span></div>
+        <button class="ab-btn" onclick="showSec('admin-panel')">Panel Admin <i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- Broadcast Banner — tampil ke semua user -->
+    <div id="bc-banner" class="bc-banner d-none">
+      <div class="bc-banner-inner">
+        <div id="bc-banner-icon-wrap" class="bc-banner-icon-wrap"><i id="bc-banner-icon" class="fa-solid fa-bullhorn"></i></div>
+        <div class="bc-banner-text">
+          <div id="bc-banner-title" class="bc-banner-title">Pengumuman</div>
+          <div id="bc-banner-msg" class="bc-banner-msg"></div>
+        </div>
+        <button class="bc-close-btn" onclick="closeBcBanner()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <!-- Global Maintenance Banner -->
+    <div class="global-maint-banner d-none" id="global-maint-banner">
+      <div class="gmb-inner">
+        <div class="gmb-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="gmb-text">
+          <strong>Server Sedang Maintenance</strong>
+          <span id="gmb-msg">Semua fitur sementara tidak dapat digunakan. Mohon tunggu.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU UTAMA -->
+    <div id="main-menu" class="menu-cards">
+
+      <!-- Welcome Card -->
+      <!-- Visitor Counter Card -->
+      <div class="visitor-counter-card" id="visitor-counter-card">
+        <div class="vc-left">
+          <div class="vc-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="vc-text">
+            <div class="vc-label">Total Pengunjung</div>
+            <div class="vc-count" id="vc-count"><i class="fa-solid fa-spinner fa-spin" style="font-size:.8rem;opacity:.5"></i></div>
+          </div>
+        </div>
+        <div class="vc-right">
+          <div class="vc-online-wrap">
+            <span class="vc-dot-pulse"></span>
+            <span class="vc-online-num" id="vc-online">--</span>
+            <span class="vc-online-label">online</span>
+          </div>
+          <div class="vc-refresh-hint">diperbarui otomatis</div>
+        </div>
+      </div>
+
+      <div class="welcome-card">
+        <div class="wc-avatar" id="wc-avatar">?</div>
+        <div class="wc-info">
+          <div class="wc-greet" id="wc-greet">Selamat datang</div>
+          <div class="wc-name" id="wc-name">-</div>
+          <div class="wc-role" id="wc-role-tag">User</div>
+        </div>
+
+      </div>
+
+      <!-- Label Fitur -->
+      <div class="menu-section-label"><i class="fa-solid fa-gamepad"></i> Fitur Utama</div>
+
+      <!-- Grid 2 kolom -->
+      <div class="menu-grid">
+
+        <div class="mgc mgc-gold" onclick="openFeature('perform-emote')">
+          <span class="mgc-badge" id="badge-perform-emote"></span>
+          <div class="mgc-icon mc-yellow"><i class="fa-solid fa-star"></i></div>
+          <div class="mgc-label">Perform Emote</div>
+          <div class="mgc-sub">Kirim emote</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('bot-invite')">
+          <span class="mgc-badge" id="badge-bot-invite"></span>
+          <div class="mgc-icon mc-blue"><i class="fa-solid fa-robot"></i></div>
+          <div class="mgc-label">Bot Invite</div>
+          <div class="mgc-sub">Undang bot</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('join-team')">
+          <span class="mgc-badge" id="badge-join-team"></span>
+          <div class="mgc-icon mc-green"><i class="fa-solid fa-users"></i></div>
+          <div class="mgc-label">Join Tim</div>
+          <div class="mgc-sub">Masuk lobby</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('force-leave')">
+          <span class="mgc-badge" id="badge-force-leave"></span>
+          <div class="mgc-icon mc-red"><i class="fa-solid fa-right-from-bracket"></i></div>
+          <div class="mgc-label">Force Leave</div>
+          <div class="mgc-sub">Keluar bot</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('ban-check')">
+          <span class="mgc-badge" id="badge-ban-check"></span>
+          <div class="mgc-icon mc-red"><i class="fa-solid fa-ban"></i></div>
+          <div class="mgc-label">Ban Check</div>
+          <div class="mgc-sub">Cek status ban</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('player-info')">
+          <span class="mgc-badge" id="badge-player-info"></span>
+          <div class="mgc-icon mc-blue"><i class="fa-solid fa-id-card"></i></div>
+          <div class="mgc-label">Player Info</div>
+          <div class="mgc-sub">Info akun FF</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('visit-spam')">
+          <span class="mgc-badge" id="badge-visit-spam"></span>
+          <div class="mgc-icon mc-green"><i class="fa-solid fa-eye"></i></div>
+          <div class="mgc-label">Visit Spam</div>
+          <div class="mgc-sub">Kunjungan massal</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('outfit')">
+          <span class="mgc-badge" id="badge-outfit"></span>
+          <div class="mgc-icon mc-purple"><i class="fa-solid fa-shirt"></i></div>
+          <div class="mgc-label">Outfit Image</div>
+          <div class="mgc-sub">Kartu outfit</div>
+        </div>
+
+        <div class="mgc" onclick="openFeature('player-stats')">
+          <span class="mgc-badge" id="badge-player-stats"></span>
+          <div class="mgc-icon mc-orange"><i class="fa-solid fa-chart-bar"></i></div>
+          <div class="mgc-label">Player Stats</div>
+          <div class="mgc-sub">Statistik BR & CS</div>
+        </div>
+
+        <div class="mgc mgc-banner" onclick="openFeature('profile-banner')">
+          <span class="mgc-badge" id="badge-profile-banner"></span>
+          <div class="mgc-icon mc-violet"><i class="fa-solid fa-id-badge"></i></div>
+          <div class="mgc-label">Profile Banner</div>
+          <div class="mgc-sub">Kartu profil FF</div>
+        </div>
+
+        <div class="mgc mgc-download" onclick="showSec('download-sec')">
+          <div class="mgc-icon mc-cyan"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <div class="mgc-label">Download App</div>
+          <div class="mgc-sub">Versi Android <i class="fa-brands fa-android" style="color:#3ddc84;margin-left:2px"></i></div>
+          <span class="dl-new-badge">NEW</span>
+        </div>
+
+        <div class="mgc mgc-referral" onclick="showSec('referral-sec')">
+          <div class="mgc-icon mc-gold"><i class="fa-solid fa-user-plus"></i></div>
+          <div class="mgc-label">Referral</div>
+          <div class="mgc-sub">Ajak teman, dapat badge!</div>
+          <span class="dl-new-badge" style="background:linear-gradient(135deg,#ffd60a,#ff9f0a)">HOT</span>
+        </div>
+
+        <div class="mgc" onclick="openMessages()">
+          <div class="mgc-icon mc-teal"><i class="fa-solid fa-bell"></i></div>
+          <div class="mgc-label">Pesan</div>
+          <div class="mgc-sub">Notifikasi admin</div>
+          <span class="msg-badge d-none" id="msg-badge" style="top:10px;right:10px;"></span>
+        </div>
+
+      </div>
+
+      <!-- Donasi — di bawah grid -->
+      <div class="mgc mgc-donate" onclick="showSec('donasi-sec')" style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;margin-top:4px;">
+        <div class="mgc-icon mc-pink" style="flex-shrink:0"><i class="fa-solid fa-heart"></i></div>
+        <div style="flex:1">
+          <div class="mgc-label">Donasi</div>
+          <div class="mgc-sub">Support kami <i class="fa-solid fa-heart ani-beat ico-pink"></i></div>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="opacity:.4;font-size:.8rem"></i>
+      </div>
+
+      <!-- WhatsApp -->
+      <a href="https://whatsapp.com/channel/0029Vb6lotd6hENhZaVRuW1F" target="_blank" rel="noopener" class="mc wa-menu-card">
+        <div class="wa-menu-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="wa-menu-text">
+          <strong>EMOTE BOT FREE FIRE</strong>
+          <span>Ikuti saluran EMOTE BOT FREE FIRE</span>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square" style="color:rgba(37,211,102,.7);flex-shrink:0;margin-left:auto"></i>
+      </a>
+
+      <!-- KOMENTAR SECTION di halaman utama -->
+      <div class="comment-box-home">
+        <div class="cbh-header">
+          <div class="cbh-title"><i class="fa-solid fa-comments"></i> Komentar</div>
+          <span class="cbh-count" id="cbh-count">0</span>
+        </div>
+        <!-- Form kirim komentar -->
+        <div class="cbh-form" id="cbh-form">
+          <textarea id="cbh-input" class="cbh-textarea" placeholder="Tulis komentar..." maxlength="200" rows="2" oninput="cbhCount()"></textarea>
+          <div class="cbh-form-footer">
+            <span class="cbh-char" id="cbh-char">0/200</span>
+            <button class="cbh-send-btn" onclick="submitComment()"><i class="fa-solid fa-paper-plane"></i> Kirim</button>
+          </div>
+        </div>
+        <!-- List komentar -->
+        <div id="cbh-list" class="cbh-list">
+          <div class="cbh-loading"><i class="fa-solid fa-spinner fa-spin"></i> Memuat komentar...</div>
+        </div>
+        <button class="cbh-load-more d-none" id="cbh-load-more" onclick="loadMoreComments()">
+          <i class="fa-solid fa-chevron-down"></i> Lihat lebih banyak
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- BOT INVITE -->
+    <section id="bot-invite" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-blue"><i class="fa-solid fa-robot"></i></div><div><h2>Bot Invite</h2><p class="sec-sub">Undang bot ke tim</p></div></div>
+      <div class="fblk"><div class="flbl">Region</div><div id="rg-invite" class="region-grid"></div><input type="hidden" id="invite-region" value="id"></div>
+      <div class="fblk"><div class="flbl">Ukuran Tim</div><div class="size-row" id="sr-invite"><button class="sz-pill" onclick="pickSize(this,2,'invite-size')">2</button><button class="sz-pill" onclick="pickSize(this,3,'invite-size')">3</button><button class="sz-pill" onclick="pickSize(this,4,'invite-size')">4</button><button class="sz-pill" onclick="pickSize(this,5,'invite-size')">5</button><button class="sz-pill" onclick="pickSize(this,6,'invite-size')">6</button></div><input type="hidden" id="invite-size"></div>
+      <div class="fblk"><div class="flbl">Target UID</div><div class="inp-paste-wrap"><input type="number" id="invite-uid" class="f-inp" placeholder="Masukkan UID Player"><button class="paste-btn" onclick="pasteToInput('invite-uid')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+      <div class="fblk"><div class="toggle-row"><div><div class="trow-lbl">Keluar setelah undangan</div><div class="trow-sub">Bot otomatis keluar setelah invite</div></div><label class="ios-toggle"><input type="checkbox" id="invite-leave"><span class="ios-track"></span></label></div></div>
+      <button class="act-btn btn-blue" onclick="apiBotInvite()"><i class="fa-solid fa-paper-plane"></i> Kirim Undangan<div class="btn-shine"></div></button>
+    </section>
+
+    <!-- JOIN TEAM -->
+    <section id="join-team" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-green"><i class="fa-solid fa-users"></i></div><div><h2>Join Tim</h2><p class="sec-sub">Masuk ke lobby</p></div></div>
+      <div class="fblk"><div class="flbl">Region</div><div id="rg-join" class="region-grid"></div><input type="hidden" id="join-region" value="id"></div>
+      <div class="fblk"><div class="flbl">Kode Tim</div><div class="inp-paste-wrap"><input type="number" id="join-tc" class="f-inp" placeholder="Masukkan Kode Tim"><button class="paste-btn" onclick="pasteToInput('join-tc')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+      <button class="act-btn btn-green" onclick="apiJoinTeam()"><i class="fa-solid fa-right-to-bracket"></i> Bergabung<div class="btn-shine"></div></button>
+    </section>
+
+    <!-- FORCE LEAVE -->
+    <section id="force-leave" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-red"><i class="fa-solid fa-right-from-bracket"></i></div><div><h2>Force Leave</h2><p class="sec-sub">Keluarkan bot dari tim</p></div></div>
+      <div class="fblk"><div class="flbl">Region</div><div id="rg-leave" class="region-grid"></div><input type="hidden" id="leave-region" value="id"></div>
+      <div class="fblk"><div class="flbl">Kode Verifikasi</div><div class="inp-paste-wrap"><input type="text" id="leave-key" class="f-inp" placeholder="Masukkan kode verifikasi"><button class="paste-btn" onclick="pasteToInput('leave-key')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+      <button class="act-btn btn-red" onclick="apiForceLeave()"><i class="fa-solid fa-person-walking-arrow-right"></i> Force Leave<div class="btn-shine"></div></button>
+    </section>
+
+    <!-- PERFORM EMOTE -->
+    <section id="perform-emote" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-yellow"><i class="fa-solid fa-star"></i></div><div><h2>Perform Emote</h2><p class="sec-sub">Kirim emote ke player</p></div></div>
+      <div class="cfg-box">
+        <div class="cfg-title"><i class="fa-solid fa-sliders"></i> Konfigurasi</div>
+        <div class="fblk"><div class="flbl">Region</div><div id="rg-emote" class="region-grid"></div><input type="hidden" id="emote-region" value="id"></div>
+        <div class="fblk"><div class="flbl">Kode Tim</div><div class="inp-paste-wrap"><input type="number" id="emote-tc" class="f-inp" placeholder="Masukkan Kode Tim"><button class="paste-btn" onclick="pasteToInput('emote-tc')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+        <div class="fblk"><div class="flbl">Target UID (Maks 5)</div>
+          <div id="uid-container"><div class="uid-row"><input type="number" class="emote-uid f-inp" placeholder="UID 1"><button class="uid-add-btn" onclick="addUid()"><i class="fa-solid fa-plus"></i></button></div></div>
+        </div>
+        <button class="save-cfg" onclick="saveConfig()"><i class="fa-solid fa-floppy-disk"></i> Simpan Konfigurasi</button>
+      </div>
+      <!-- Favorit Row -->
+      <div class="fav-bar" id="fav-bar">
+        <div class="fav-bar-header">
+          <span><i class="fa-solid fa-star" style="color:#ffd60a"></i> Favorit</span>
+          <span class="fav-bar-hint" id="fav-bar-hint">Tekan <i class="fa-solid fa-star ani-pulse ico-gold"></i> di emote untuk simpan</span>
+        </div>
+        <div id="fav-grid" class="fav-grid"></div>
+      </div>
+      <div class="emote-bar">
+        <div class="ebar-wrap"><i class="fa-solid fa-magnifying-glass ebar-ico"></i><input type="text" id="emote-search" placeholder="Cari emote..." oninput="filterEmotes()" class="ebar-inp"></div>
+        <select id="emote-category" onchange="filterEmotes()" class="ebar-sel"><option value="all">Semua</option></select>
+      </div>
+      <div class="manual-row"><div class="inp-paste-wrap"><input type="number" id="manual-emote-id" placeholder="ID Emote Manual" class="f-inp"><button class="paste-btn" onclick="pasteToInput('manual-emote-id')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div><button class="manual-go" onclick="manualEmote()"><i class="fa-solid fa-play"></i></button></div>
+      <div id="emulator-grid" class="emote-grid"></div>
+    </section>
+
+    <!-- BAN CHECK -->
+    <section id="ban-check" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-red"><i class="fa-solid fa-ban"></i></div><div><h2>Ban Check</h2><p class="sec-sub">Cek status ban UID</p></div></div>
+      <div class="fblk"><div class="flbl">Region</div><div id="rg-ban" class="region-grid"></div><input type="hidden" id="ban-region" value="id"></div>
+      <div class="fblk"><div class="flbl">UID Player</div><div class="inp-paste-wrap"><input type="number" id="ban-uid" class="f-inp" placeholder="Masukkan UID Player"><button class="paste-btn" onclick="pasteToInput('ban-uid')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+      <button class="act-btn btn-red" onclick="apiBanCheck()"><i class="fa-solid fa-magnifying-glass"></i> Cek Status Ban<div class="btn-shine"></div></button>
+      <div id="ban-result" class="result-card d-none"></div>
+    </section>
+
+    <!-- PLAYER INFO -->
+    <section id="player-info" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-blue"><i class="fa-solid fa-id-card"></i></div><div><h2>Player Info</h2><p class="sec-sub">Info lengkap akun FF</p></div></div>
+
+      <!-- Version Tab Switch -->
+      <div class="pi-ver-tab" id="pi-ver-tab">
+        <button class="pi-ver-btn active" id="pi-tab-v2" onclick="switchInfoVer('v2')">
+          <i class="fa-solid fa-layer-group"></i> Info V2
+          <span class="pi-ver-chip">Detail</span>
+        </button>
+        <button class="pi-ver-btn" id="pi-tab-v1" onclick="switchInfoVer('v1')">
+          <i class="fa-solid fa-database"></i> Info V1
+          <span class="pi-ver-chip pi-ver-chip-green">Lengkap</span>
+        </button>
+      </div>
+
+      <div class="fblk"><div class="flbl">Region</div><div id="rg-info" class="region-grid"></div><input type="hidden" id="info-region" value="id"></div>
+      <div class="fblk"><div class="flbl">UID Player</div><div class="inp-paste-wrap"><input type="number" id="info-uid" class="f-inp" placeholder="Masukkan UID Player"><button class="paste-btn" onclick="pasteToInput('info-uid')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+      <button class="act-btn btn-blue" id="pi-btn-cek" onclick="apiPlayerInfoDispatch()"><i class="fa-solid fa-id-card"></i> Ambil Info<div class="btn-shine"></div></button>
+      <div id="info-result" class="result-card d-none"></div>
+    </section>
+
+    <!-- VISIT SPAM -->
+    <section id="visit-spam" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-green"><i class="fa-solid fa-eye"></i></div><div><h2>Visit Spam</h2><p class="sec-sub">Kirim kunjungan massal</p></div></div>
+      <div class="fblk"><div class="flbl">Region</div><div id="rg-visit" class="region-grid"></div><input type="hidden" id="visit-region" value="id"></div>
+      <div class="fblk"><div class="flbl">UID Target</div><div class="inp-paste-wrap"><input type="number" id="visit-uid" class="f-inp" placeholder="Masukkan UID Target"><button class="paste-btn" onclick="pasteToInput('visit-uid')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+      <button class="act-btn btn-green" onclick="apiVisitSpam()"><i class="fa-solid fa-eye"></i> Kirim Visit Spam<div class="btn-shine"></div></button>
+      <div id="visit-result" class="result-card d-none"></div>
+    </section>
+
+    <!-- OUTFIT IMAGE -->
+    <section id="outfit" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-purple"><i class="fa-solid fa-shirt"></i></div><div><h2>Outfit Image</h2><p class="sec-sub">Kartu outfit player FF</p></div></div>
+      <div class="fblk"><div class="flbl">Region</div><div id="rg-outfit" class="region-grid"></div><input type="hidden" id="outfit-region" value="id"></div>
+      <div class="fblk"><div class="flbl">UID Player</div><div class="inp-paste-wrap"><input type="number" id="outfit-uid" class="f-inp" placeholder="Masukkan UID Player"><button class="paste-btn" onclick="pasteToInput('outfit-uid')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+      <button class="act-btn btn-purple" onclick="apiOutfit()"><i class="fa-solid fa-shirt"></i> Tampilkan Outfit<div class="btn-shine"></div></button>
+      <div id="outfit-result" class="result-card d-none"></div>
+    </section>
+
+    <!-- PLAYER STATS -->
+    <section id="player-stats" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-orange"><i class="fa-solid fa-chart-bar"></i></div><div><h2>Player Stats</h2><p class="sec-sub">Statistik BR & CS player</p></div></div>
+      <div class="fblk"><div class="flbl">Region / Server</div><div id="rg-stats" class="region-grid"></div><input type="hidden" id="stats-region" value="id"></div>
+      <div class="fblk"><div class="flbl">UID Player</div><div class="inp-paste-wrap"><input type="number" id="stats-uid" class="f-inp" placeholder="Masukkan UID Player"><button class="paste-btn" onclick="pasteToInput('stats-uid')"><i class="fa-solid fa-clipboard"></i> Tempel</button></div></div>
+
+      <!-- Mode Match -->
+      <div class="fblk">
+        <div class="flbl">Mode Match</div>
+        <div class="mode-row" id="mode-match-row">
+          <button class="mode-pill active" onclick="pickModePill(this,'CAREER','stats-matchmode','mode-match-row')">CAREER</button>
+          <button class="mode-pill" onclick="pickModePill(this,'NORMAL','stats-matchmode','mode-match-row')">NORMAL</button>
+          <button class="mode-pill" onclick="pickModePill(this,'RANKED','stats-matchmode','mode-match-row')">RANKED</button>
+        </div>
+        <input type="hidden" id="stats-matchmode" value="CAREER">
+      </div>
+
+      <!-- Game Mode -->
+      <div class="fblk">
+        <div class="flbl">Game Mode</div>
+        <div class="mode-row" id="mode-game-row">
+          <button class="mode-pill active" onclick="pickModePill(this,'br','stats-gamemode','mode-game-row')"><i class="fa-solid fa-parachute-box"></i> Battle Royale</button>
+          <button class="mode-pill" onclick="pickModePill(this,'cs','stats-gamemode','mode-game-row')"><i class="fa-solid fa-crosshairs"></i> Clash Squad</button>
+        </div>
+        <input type="hidden" id="stats-gamemode" value="br">
+      </div>
+
+      <button class="act-btn btn-orange" onclick="apiPlayerStats()"><i class="fa-solid fa-chart-bar"></i> <span>Ambil Statistik</span><div class="btn-shine"></div></button>
+      <div id="stats-result" class="result-card d-none"></div>
+    </section>
+
+    <!-- PROFILE / GANTI PASSWORD -->
+    <section id="profile-menu" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-blue"><i class="fa-solid fa-circle-user"></i></div><div><h2>Profil Saya</h2><p class="sec-sub" id="pf-sub">-</p></div></div>
+      <div class="profile-card">
+        <div class="pf-avatar" id="pf-avatar">?</div>
+        <div><div class="pf-name" id="pf-name">-</div><div class="pf-email" id="pf-email">-</div><div class="pf-role-chip" id="pf-role-chip">-</div></div>
+      </div>
+      <div class="section-divider"><i class="fa-solid fa-key"></i> Ganti Password</div>
+      <div class="fblk"><div class="flbl">Password Lama</div><div class="inp-wrap"><input type="password" id="pw-old" class="f-inp" placeholder="Masukkan password lama"><button class="f-eye" onclick="toggleEye('pw-old',this)"><i class="fa-solid fa-eye-slash"></i></button></div></div>
+      <div class="fblk"><div class="flbl">Password Baru</div><div class="inp-wrap"><input type="password" id="pw-new" class="f-inp" placeholder="Minimal 6 karakter"><button class="f-eye" onclick="toggleEye('pw-new',this)"><i class="fa-solid fa-eye-slash"></i></button></div></div>
+      <div class="fblk"><div class="flbl">Konfirmasi Password Baru</div><div class="inp-wrap"><input type="password" id="pw-confirm" class="f-inp" placeholder="Ulangi password baru"><button class="f-eye" onclick="toggleEye('pw-confirm',this)"><i class="fa-solid fa-eye-slash"></i></button></div></div>
+      <button class="act-btn btn-blue" onclick="doChangePassword()"><i class="fa-solid fa-key"></i> Simpan Password Baru<div class="btn-shine"></div></button>
+      <div style="height:12px"></div>
+      <button class="act-btn btn-red" style="opacity:.7" onclick="doLogout()"><i class="fa-solid fa-right-from-bracket"></i> Keluar Akun<div class="btn-shine"></div></button>
+    </section>
+
+    <!-- ADMIN PANEL -->
+    <section id="admin-panel" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-yellow"><i class="fa-solid fa-crown"></i></div><div><h2>Admin Panel</h2><p class="sec-sub">Kelola sistem</p></div></div>
+
+      <div class="admin-stats">
+        <div class="ast"><div class="ast-n" id="ast-total">-</div><div class="ast-l">Total User</div></div>
+        <div class="ast"><div class="ast-n ast-gold" id="ast-admin">-</div><div class="ast-l">Admin</div></div>
+        <div class="ast"><div class="ast-n ast-blue" id="ast-user">-</div><div class="ast-l">User</div></div>
+        <div class="ast"><div class="ast-n ast-online" id="ast-online">-</div><div class="ast-l">🟢 Online</div></div>
+      </div>
+
+      <!-- ACCORDION SECTIONS -->
+
+      <!-- 1. Status Server Global -->
+      <div class="acc-item" id="acc-server-global">
+        <button class="acc-header open" onclick="toggleAcc('acc-server-global')">
+          <span><i class="fa-solid fa-server acc-hdr-ico"></i> Status Server Global</span>
+          <i class="fa-solid fa-chevron-down acc-arrow"></i>
+        </button>
+        <div class="acc-body">
+          <div class="srv-global-wrap" id="srv-global-wrap">
+            <div class="srv-global-info">
+              <div class="srv-global-icon"><i class="fa-solid fa-server"></i></div>
+              <div>
+                <div class="srv-global-label">Server Utama</div>
+                <div class="srv-global-sub" id="srv-global-sub">Semua fitur dapat digunakan</div>
+              </div>
+            </div>
+            <div class="srv-toggle-wrap">
+              <span class="srv-status active" id="srv-global-status"><i class="fa-solid fa-circle-check ani-pulse ico-green"></i> Aktif</span>
+              <label class="ios-toggle">
+                <input type="checkbox" id="srv-global-toggle" checked onchange="toggleGlobalServer(this)">
+                <span class="ios-track"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Status Fitur Individual -->
+      <div class="acc-item" id="acc-fitur">
+        <button class="acc-header" onclick="toggleAcc('acc-fitur')">
+          <span><i class="fa-solid fa-puzzle-piece acc-hdr-ico"></i> Status Fitur Individual <span class="rt-label"><i class="fa-solid fa-bolt"></i> Real-time</span></span>
+          <i class="fa-solid fa-chevron-down acc-arrow"></i>
+        </button>
+        <div class="acc-body" style="display:none">
+          <div id="server-manager" class="server-manager"></div>
+        </div>
+      </div>
+
+      <!-- 3. Status Region -->
+      <div class="acc-item" id="acc-region">
+        <button class="acc-header" onclick="toggleAcc('acc-region')">
+          <span><i class="fa-solid fa-earth-asia acc-hdr-ico"></i> Status Region <span class="rt-label"><i class="fa-solid fa-bolt"></i> Real-time</span></span>
+          <i class="fa-solid fa-chevron-down acc-arrow"></i>
+        </button>
+        <div class="acc-body" style="display:none">
+          <p style="font-size:.78rem;color:var(--t3);margin:0 0 12px">Atur region mana yang aktif/maintenance. Region ID selalu paling atas.</p>
+          <div id="region-manager" class="server-manager"></div>
+        </div>
+      </div>
+
+      <!-- 4. Broadcast Pesan -->
+      <div class="acc-item" id="acc-broadcast">
+        <button class="acc-header" onclick="toggleAcc('acc-broadcast')">
+          <span><i class="fa-solid fa-bullhorn acc-hdr-ico"></i> Broadcast Pesan</span>
+          <i class="fa-solid fa-chevron-down acc-arrow"></i>
+        </button>
+        <div class="acc-body" style="display:none">
+          <div class="bc-composer">
+            <div class="bc-type-grid">
+              <button class="bc-type-card active" onclick="setBcType(this,'info')">
+                <div class="btc-icon" style="background:rgba(79,172,254,.15)"><i class="fa-solid fa-circle-info" style="color:#4facfe"></i></div>
+                <span>Info</span>
+              </button>
+              <button class="bc-type-card" onclick="setBcType(this,'ok')">
+                <div class="btc-icon" style="background:rgba(48,209,88,.15)"><i class="fa-solid fa-circle-check" style="color:#30d158"></i></div>
+                <span>Sukses</span>
+              </button>
+              <button class="bc-type-card" onclick="setBcType(this,'warn')">
+                <div class="btc-icon" style="background:rgba(255,214,10,.15)"><i class="fa-solid fa-triangle-exclamation" style="color:#ffd60a"></i></div>
+                <span>Peringatan</span>
+              </button>
+              <button class="bc-type-card" onclick="setBcType(this,'err')">
+                <div class="btc-icon" style="background:rgba(255,69,58,.15)"><i class="fa-solid fa-circle-xmark" style="color:#ff453a"></i></div>
+                <span>Error</span>
+              </button>
+              <button class="bc-type-card" onclick="setBcType(this,'update')">
+                <div class="btc-icon" style="background:rgba(191,90,242,.15)"><i class="fa-solid fa-rotate" style="color:#bf5af2"></i></div>
+                <span>Update</span>
+              </button>
+              <button class="bc-type-card" onclick="setBcType(this,'maint')">
+                <div class="btc-icon" style="background:rgba(255,159,10,.15)"><i class="fa-solid fa-wrench" style="color:#ff9f0a"></i></div>
+                <span>Maintenance</span>
+              </button>
+              <button class="bc-type-card" onclick="setBcType(this,'gift')">
+                <div class="btc-icon" style="background:rgba(255,214,10,.15)"><i class="fa-solid fa-gift" style="color:#ffd60a"></i></div>
+                <span>Hadiah</span>
+              </button>
+              <button class="bc-type-card" onclick="setBcType(this,'urgent')">
+                <div class="btc-icon" style="background:rgba(255,69,58,.15)"><i class="fa-solid fa-bolt" style="color:#ff453a"></i></div>
+                <span>Urgent</span>
+              </button>
+            </div>
+            <div class="bc-form">
+              <div class="bc-inp-group">
+                <label class="bc-label"><i class="fa-solid fa-heading"></i> Judul</label>
+                <input type="text" id="bc-title" class="f-inp" placeholder="Judul notifikasi..." maxlength="50">
+                <span class="bc-counter" id="bc-title-count">0/50</span>
+              </div>
+              <div class="bc-inp-group">
+                <label class="bc-label"><i class="fa-solid fa-align-left"></i> Pesan</label>
+                <textarea id="bc-msg" class="f-inp bc-textarea" placeholder="Isi pesan broadcast yang ingin dikirim ke semua user..." maxlength="300" rows="4" oninput="bcCount()"></textarea>
+                <span class="bc-counter" id="bc-msg-count">0/300</span>
+              </div>
+              <div class="bc-live-preview" id="bc-live-preview">
+                <div class="blp-label"><i class="fa-solid fa-eye"></i> Preview</div>
+                <div class="blp-box" id="blp-box">
+                  <div class="blp-icon-wrap" id="blp-icon-wrap"><i class="fa-solid fa-circle-info" id="blp-icon" style="color:#4facfe"></i></div>
+                  <div class="blp-content">
+                    <div class="blp-title" id="blp-title">Judul broadcast...</div>
+                    <div class="blp-msg" id="blp-msg">Isi pesan akan muncul di sini...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bc-actions">
+              <button class="act-btn btn-blue" onclick="sendBroadcast()"><i class="fa-solid fa-paper-plane"></i> Kirim ke Semua User<div class="btn-shine"></div></button>
+              <button class="bc-schedule-hint" onclick="toast('Fitur jadwal segera hadir!','info')"><i class="fa-regular fa-clock"></i> Jadwalkan</button>
+            </div>
+          </div>
+          <div id="bc-active-wrap" class="bc-active-wrap d-none">
+            <div class="bc-active-header">
+              <div class="bah-left"><i class="fa-solid fa-bolt"></i> Broadcast Aktif</div>
+              <div class="bah-right">
+                <button class="bah-edit-btn" onclick="editBroadcast()"><i class="fa-solid fa-pen"></i> Edit</button>
+                <button class="bc-clear-btn" onclick="clearBroadcast()"><i class="fa-solid fa-trash"></i> Hapus</button>
+              </div>
+            </div>
+            <div id="bc-active-box" class="bc-active-box"></div>
+            <div class="bc-stats-row">
+              <div class="bsr-item"><i class="fa-solid fa-users"></i> <span id="bc-reach">Semua user</span></div>
+              <div class="bsr-item"><i class="fa-regular fa-clock"></i> <span id="bc-sent-time">-</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Daftar Pengguna -->
+      <div class="acc-item" id="acc-users">
+        <button class="acc-header" onclick="toggleAcc('acc-users')">
+          <span><i class="fa-solid fa-users acc-hdr-ico"></i> Daftar Pengguna</span>
+          <i class="fa-solid fa-chevron-down acc-arrow"></i>
+        </button>
+        <div class="acc-body" style="display:none">
+          <button class="act-btn btn-blue" onclick="loadAdminData()" style="margin-bottom:14px"><i class="fa-solid fa-rotate"></i> Refresh<div class="btn-shine"></div></button>
+          <div id="admin-list" class="admin-list"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PESAN / INBOX -->
+    <section id="messages-sec" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head">
+        <div class="sec-ico mc-blue"><i class="fa-solid fa-bell"></i></div>
+        <div><h2>Kotak Pesan</h2><p class="sec-sub">Notifikasi &amp; pengumuman dari admin</p></div>
+      </div>
+      <div id="msg-list" class="msg-list">
+        <div class="msg-loading"><i class="fa-solid fa-spinner fa-spin"></i> Memuat pesan...</div>
+      </div>
+    </section>
+
+    <!-- PROFILE BANNER -->
+    <section id="profile-banner" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head">
+        <div class="sec-ico mc-violet"><i class="fa-solid fa-id-badge"></i></div>
+        <div><h2>Profile Banner</h2><p class="sec-sub">Kartu profil Free Fire kamu</p></div>
+      </div>
+      <div class="fblk">
+        <div class="flbl">UID Free Fire</div>
+        <div class="inp-wrap">
+          <input type="number" id="banner-uid" class="f-inp" placeholder="Masukkan UID Free Fire kamu">
+        </div>
+      </div>
+      <button class="act-btn btn-blue" onclick="loadProfileBanner()">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Banner<div class="btn-shine"></div>
+      </button>
+      <div id="banner-result" class="banner-result d-none">
+        <div class="banner-loading" id="banner-loading"><i class="fa-solid fa-spinner fa-spin"></i> Memuat banner...</div>
+        <img id="banner-img" class="banner-img d-none" src="" alt="Profile Banner" onclick="openBannerZoom()">
+        <div class="banner-hint d-none" id="banner-hint"><i class="fa-solid fa-hand-pointer"></i> Klik untuk perbesar &middot; Tahan untuk simpan ke galeri</div>
+      </div>
+      <div id="banner-modal" class="qris-modal" onclick="closeBannerZoom()">
+        <img id="banner-zoom-img" src="" alt="Banner Zoom" class="qris-zoom-img" style="max-width:96%;border-radius:16px;">
+        <button class="qris-close-btn" onclick="closeBannerZoom()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </section>
+
+    <!-- REFERRAL -->
+    <section id="referral-sec" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-gold"><i class="fa-solid fa-user-plus"></i></div><div><h2>Referral</h2><p class="sec-sub">Ajak teman, kumpulkan badge!</p></div></div>
+
+      <!-- Referral link user -->
+      <div class="ref-card">
+        <div class="ref-card-top">
+          <div class="ref-avatar" id="ref-avatar">?</div>
+          <div class="ref-info">
+            <div class="ref-username" id="ref-username">-</div>
+            <div class="ref-badge-wrap" id="ref-badge-wrap"></div>
+          </div>
+        </div>
+        <div class="ref-stats-row">
+          <div class="ref-stat"><div class="ref-stat-n" id="ref-count">0</div><div class="ref-stat-l">Teman diajak</div></div>
+          <div class="ref-stat"><div class="ref-stat-n ref-stat-gold" id="ref-points">0</div><div class="ref-stat-l">Poin Referral</div></div>
+          <div class="ref-stat"><div class="ref-stat-n ref-stat-blue" id="ref-badge-count">0</div><div class="ref-stat-l">Badge</div></div>
+        </div>
+      </div>
+
+      <!-- Badge milestones -->
+      <div class="ref-milestones">
+        <div class="ref-milestones-title"><i class="fa-solid fa-trophy"></i> Milestone Badge</div>
+        <div class="ref-milestone-list" id="ref-milestone-list"></div>
+      </div>
+
+      <!-- Link referral -->
+      <div class="fblk">
+        <div class="flbl">Link Referral Kamu</div>
+        <div class="ref-link-wrap">
+          <input type="text" id="ref-link-input" class="f-inp" readonly>
+          <button class="ref-copy-btn" onclick="copyRefLink()"><i class="fa-solid fa-copy"></i> Salin</button>
+        </div>
+        <div class="ref-share-hint">Bagikan link ini ke teman, setiap yang daftar lewat linkmu = +1 referral!</div>
+      </div>
+
+      <!-- Share buttons -->
+      <div class="ref-share-row">
+        <button class="ref-share-btn ref-wa" onclick="shareRefWA()"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+        <button class="ref-share-btn ref-tiktok" onclick="shareRefTikTok()"><i class="fa-brands fa-tiktok"></i> TikTok</button>
+        <button class="ref-share-btn ref-copy2" onclick="copyRefLink()"><i class="fa-solid fa-link"></i> Salin Link</button>
+      </div>
+
+      <!-- Leaderboard referral -->
+      <div class="ref-leaderboard">
+        <div class="ref-lb-title"><i class="fa-solid fa-ranking-star"></i> Top Referral</div>
+        <div id="ref-lb-list" class="ref-lb-list"><div class="cbh-loading"><i class="fa-solid fa-spinner fa-spin"></i> Memuat...</div></div>
+      </div>
+    </section>
+
+    <!-- DONASI -->
+    <section id="donasi-sec" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head"><div class="sec-ico mc-pink"><i class="fa-solid fa-heart"></i></div><div><h2>Donasi</h2><p class="sec-sub">Support developer FF Emote</p></div></div>
+      <div class="donasi-card">
+        <div class="donasi-msg">
+          <i class="fa-solid fa-heart donasi-heart"></i>
+          <h3><i class="fa-solid fa-hands-praying ani-bounce ico-gold"></i> Terima Kasih!</h3>
+          <p>Donasi kamu sangat berarti untuk terus mengembangkan Website Emote Epep. Setiap kontribusi membantu kami menjaga server tetap berjalan dan menambah fitur baru.</p>
+        </div>
+        <div class="donasi-qris-wrap">
+          <div class="donasi-qris-label"><i class="fa-solid fa-qrcode"></i> Scan QRIS</div>
+          <img src="https://i.ibb.co.com/ynyWFx5s/Kode-QRIS-Saint-Petersburg-SENEN-2.png" alt="QRIS Donasi" class="donasi-qris-img" onclick="openQrisZoom()" title="Klik untuk perbesar">
+          <div class="donasi-qris-hint"><i class="fa-solid fa-hand-pointer"></i> Klik gambar untuk perbesar</div>
+        </div>
+        <div class="donasi-steps">
+          <div class="donasi-step"><div class="ds-num">1</div><div class="ds-txt">Buka aplikasi mobile banking / e-wallet kamu</div></div>
+          <div class="donasi-step"><div class="ds-num">2</div><div class="ds-txt">Pilih menu Scan QR / QRIS</div></div>
+          <div class="donasi-step"><div class="ds-num">3</div><div class="ds-txt">Arahkan kamera ke QR Code di atas</div></div>
+          <div class="donasi-step"><div class="ds-num">4</div><div class="ds-txt">Masukkan nominal & konfirmasi pembayaran</div></div>
+        </div>
+        <div class="donasi-wa">
+          <a href="https://whatsapp.com/channel/0029Vb6lotd6hENhZaVRuW1F" target="_blank" class="donasi-wa-btn"><i class="fa-brands fa-whatsapp"></i> Konfirmasi via WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD APP -->
+    <section id="download-sec" class="sec d-none">
+      <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-chevron-left"></i> Kembali</button>
+      <div class="sec-head">
+        <div class="sec-ico mc-cyan"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div><h2>Download Aplikasi</h2><p class="sec-sub">Website Emote Epep — Android APK</p></div>
+      </div>
+      <div class="dl-app-card">
+        <div class="dl-app-logo"><i class="fa-solid fa-gamepad"></i></div>
+        <div class="dl-app-info">
+          <div class="dl-app-name">Website Emote Epep</div>
+          <div class="dl-app-dev"><i class="fa-solid fa-code"></i> by Givy</div>
+          <div class="dl-app-version-row">
+            <span class="dl-ver-badge"><i class="fa-solid fa-tag"></i> v1.0.0</span>
+            <span class="dl-platform-badge"><i class="fa-brands fa-android"></i> Android</span>
+          </div>
+        </div>
+      </div>
+      <div class="dl-stats-row">
+        <div class="dl-stat-item">
+          <i class="fa-solid fa-file-zipper dl-stat-icon ico-blue"></i>
+          <div class="dl-stat-val" id="dl-file-size">6.78 MB</div>
+          <div class="dl-stat-lbl">Ukuran File</div>
+        </div>
+        <div class="dl-stat-item">
+          <i class="fa-solid fa-clock dl-stat-icon ico-gold"></i>
+          <div class="dl-stat-val" id="dl-est-time">~1-3 mnt</div>
+          <div class="dl-stat-lbl">Estimasi Download</div>
+        </div>
+        <div class="dl-stat-item">
+          <i class="fa-solid fa-mobile-screen dl-stat-icon ico-green"></i>
+          <div class="dl-stat-val">Android 7+</div>
+          <div class="dl-stat-lbl">Min. Versi</div>
+        </div>
+        <div class="dl-stat-item">
+          <i class="fa-solid fa-shield-halved dl-stat-icon ico-purple"></i>
+          <div class="dl-stat-val">Aman</div>
+          <div class="dl-stat-lbl">No Malware</div>
+        </div>
+      </div>
+      <div class="dl-features-box">
+        <div class="dl-features-title"><i class="fa-solid fa-list-check"></i> Yang ada di aplikasi:</div>
+        <div class="dl-feature-row"><i class="fa-solid fa-check ico-green"></i> Perform Emote otomatis</div>
+        <div class="dl-feature-row"><i class="fa-solid fa-check ico-green"></i> Bot Invite &amp; Join Tim</div>
+        <div class="dl-feature-row"><i class="fa-solid fa-check ico-green"></i> Player Info &amp; Stats</div>
+        <div class="dl-feature-row"><i class="fa-solid fa-check ico-green"></i> Ban Check &amp; Visit Spam</div>
+        <div class="dl-feature-row"><i class="fa-solid fa-check ico-green"></i> Tampilan premium dark UI</div>
+      </div>
+      <a id="dl-main-btn" href="https://www.mediafire.com/file/9ak4xqiz9wed378/emote-bot.apk/file" class="dl-main-btn" target="_blank" rel="noopener" onclick="startDlAnim(this)">
+        <i class="fa-solid fa-download"></i>
+        <span>Download APK Sekarang</span>
+        <div class="dl-btn-sub">Gratis &middot; Tidak perlu Play Store</div>
+      </a>
+      <div class="dl-speed-info">
+        <div class="dl-speed-row"><i class="fa-solid fa-wifi"></i><span>WiFi / 4G</span><span class="dl-speed-val">~30 detik</span></div>
+        <div class="dl-speed-row"><i class="fa-solid fa-signal"></i><span>3G / Lemah</span><span class="dl-speed-val">~2-5 menit</span></div>
+      </div>
+      <div class="dl-install-box">
+        <div class="dl-install-title"><i class="fa-solid fa-circle-info ico-blue"></i> Cara Install APK</div>
+        <div class="dl-install-step"><div class="dl-step-num">1</div><div class="dl-step-txt">Download file APK di atas</div></div>
+        <div class="dl-install-step"><div class="dl-step-num">2</div><div class="dl-step-txt">Buka <strong>Pengaturan &rarr; Keamanan</strong> &rarr; aktifkan <strong>"Izinkan dari sumber tidak dikenal"</strong></div></div>
+        <div class="dl-install-step"><div class="dl-step-num">3</div><div class="dl-step-txt">Buka file APK dari notifikasi atau File Manager</div></div>
+        <div class="dl-install-step"><div class="dl-step-num">4</div><div class="dl-step-txt">Klik <strong>Install</strong> dan tunggu proses selesai</div></div>
+        <div class="dl-install-step"><div class="dl-step-num">5</div><div class="dl-step-txt">Buka aplikasi &amp; login dengan akun yang sama</div></div>
+        <div class="dl-install-note"><i class="fa-solid fa-triangle-exclamation ico-gold"></i> Jika ada peringatan "Play Protect", pilih <strong>Tetap Install</strong> &mdash; APK ini aman.</div>
+      </div>
+      <a href="https://whatsapp.com/channel/0029Vb6lotd6hENhZaVRuW1F" target="_blank" class="dl-wa-btn">
+        <i class="fa-brands fa-whatsapp"></i> Butuh bantuan? Chat kami di WhatsApp
+      </a>
+    </section>
+
+    <!-- QRIS ZOOM MODAL -->
+    <div id="qris-modal" class="qris-modal" onclick="closeQrisZoom()">
+      <img src="https://i.ibb.co.com/ynyWFx5s/Kode-QRIS-Saint-Petersburg-SENEN-2.png" alt="QRIS Donasi" class="qris-zoom-img">
+      <button class="qris-close-btn" onclick="closeQrisZoom()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+        <footer class="app-footer">
+      <div class="footer-logo"><svg width="12" height="12" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" fill="#4facfe" opacity=".7"/><circle cx="16" cy="16" r="3.5" fill="white" opacity=".8"/></svg> Website Emote Epep</div>
+      <p>Dibuat oleh <strong class="credit">Givy</strong></p>
+      <p class="copy">© 2026 · All Regions</p>
+    </footer>
+  </div>
+</div>
+
+<script>
+// Load credentials dari server (tidak kelihatan di view-source)
+(function(){
+  function loadScript(src, cb) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.onload = cb;
+    s.onerror = function(){ console.error('Gagal load: ' + src); };
+    document.head.appendChild(s);
+  }
+  // Fetch config dari /api/cfg (env vars), lalu chain load yang lain
+  fetch('/api/cfg')
+    .then(function(r){ return r.text(); })
+    .then(function(code){
+      var s = document.createElement('script');
+      s.textContent = code;
+      document.head.appendChild(s);
+      // Setelah CONFIG ada, load file lain secara berurutan
+      loadScript('config.js', function(){
+        loadScript('emotes.js', function(){
+          loadScript('script.js', function(){
+            initLiveValidation();
+            checkSession();
+          });
+        });
+      });
+    })
+    .catch(function(e){
+      console.error('Gagal ambil config:', e);
+    });
+})();
+</script>
+</body>
+</html>
