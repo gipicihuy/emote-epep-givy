@@ -722,7 +722,6 @@ isBan?"Akun ini tidak bisa login lagi":"Akun ini bisa login kembali"
 }
 let _pc={tc:"",region:"id",uids:[]};
 function showSec(id){
-localStorage.setItem("ff_sec",id);
 document.getElementById("main-menu").style.display="none";
 document.querySelectorAll(".sec").forEach(s=>s.classList.add("d-none"));
 const sec=document.getElementById(id);
@@ -740,7 +739,6 @@ if(u){document.getElementById("pf-email").textContent=u.email||"-";}
 
 }
 function showHome(){
-localStorage.removeItem("ff_sec");
 document.querySelectorAll(".sec").forEach(s=>s.classList.add("d-none"));
 document.getElementById("main-menu").style.display="flex";
 }
@@ -799,7 +797,6 @@ for(let i=1;i<_pc.uids.length;i++)addUid(_pc.uids[i]);
 }
 }
 const fp=document.querySelector(".sz-pill");if(fp)pickSize(fp,2,"invite-size");
-const ss=localStorage.getItem("ff_sec");if(ss)showSec(ss);
 }
 function pickSize(btn,val,hiddenId){
 btn.closest(".size-row")?.querySelectorAll(".sz-pill").forEach(b=>b.classList.remove("active"));
